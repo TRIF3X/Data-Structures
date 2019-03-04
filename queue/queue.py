@@ -1,12 +1,10 @@
-# Monday
-
 class Node:
-  def __init__(self, value, next_node=None):
+  def __init__(self, value, next_node = None):
     self.value = value
     self.next_node = next_node
 
 class Linked_list:
-  def __init__(self, head, tail):
+  def __init__(self, head=None, tail=None):
     self.head = head
     self.tail = tail
     self.length = 0
@@ -28,7 +26,7 @@ class Linked_list:
       self.head = n
       self.tail = n
     else:
-      n.next_value = self.head
+      n.next_node = self.head
       self.head = n
     self.length += 1
 
@@ -59,12 +57,17 @@ class Linked_list:
     else:
       current_node = self.head
       previous_node = None
-      while current_node is not None:
+      while current_node.next_node is not None:
         previous_node = current_node
         current_node = current_node.next_node
-      previous_node.next_node = None
-      self.tail = previous_node
+      removed = current_node
+      if previous_node is not None:
+        self.tail = previous_node
+      self.tail.next_node = None
+      return removed.value
       self.length -= 1
+
+
 
 
 class Queue:
@@ -72,19 +75,21 @@ class Queue:
     self.size = 0
     # what data structure should we
     # use to store queue elements?
-    self.storage = []
+    self.storage = Linked_list()
 
   def enqueue(self, item):
+    n = Node(item)
     self.size += 1
-    self.storage.append(Node(item))
+    self.storage.add_to_head(n)
   
   def dequeue(self):
-    if len(self.storage) > 0:
+    if self.size > 0:
       self.size -= 1
-      removed = self.storage.pop(0)
+      removed = self.storage.remove_tail()
       return removed.value
     else:
       return None
 
   def len(self):
     return self.size
+
