@@ -1,4 +1,4 @@
-# initt
+# Monday
 
 class Queue:
   def __init__(self):
