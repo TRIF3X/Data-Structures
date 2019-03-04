@@ -6,24 +6,27 @@ class Node:
     self.next_node = next_node
 
 class Linked_list:
-  def __init__(self, head, tail, length):
+  def __init__(self, head, tail):
     self.head = head
     self.tail = tail
-    self.length = length
+    self.length = 0
 
     def add_to_tail(self, value):
       n = Node(value)
       self.tail.next_node = n
       self.tail = n 
+      self.length += 1
 
 
     def add_to_head(self, value):
       n = Node(value)
       n.next_value = self.head
       self.head = n
+      self.length += 1
 
     def remove_head(self):
       self.head = self.head.next_node
+      self.length -= 1
 
     def remove_tail(self):
       current_node = self.head
@@ -33,6 +36,7 @@ class Linked_list:
         current_node = current_node.next_node
       else:
         previous_node.next_node = None
+        self.length -= 1
 
 
 
