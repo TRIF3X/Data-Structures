@@ -25,17 +25,29 @@ class Linked_list:
       self.length += 1
 
     def remove_head(self):
-      # if our length is less than 2 we don't have a head or a tail just a node
-      if self.length < 2:
+      if not self.head:
         return None
+      if self.length == 1:
+        self.head = None
+        self.tail = None
+        self.length -= 1
+        return self.head
       else:
+        current_head = self.head
         self.head = self.head.next_node
         self.length -= 1
+        return current_head
+
 
     def remove_tail(self):
       # if our length is less than 2 we don't have a head or a tail just a node
-      if self.length < 2:
+      if not self.tail:
         return None
+      if self.length == 1:
+        self.head = None
+        self.tail = None
+        self.length -= 1
+        return self.tail
       else:
         current_node = self.head
         previous_node = None
