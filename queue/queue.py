@@ -12,16 +12,29 @@ class Linked_list:
     self.length = length
 
     def add_to_tail(self, value):
-      pass
+      n = Node(value)
+      self.tail.next_node = n
+      self.tail = n 
+
 
     def add_to_head(self, value):
-      pass
+      n = Node(value)
+      n.next_value = self.head
+      self.head = n
 
-    def remove_head():
-      pass
+    def remove_head(self):
+      self.head = self.head.next_node
 
-    def remove_tail():
-      pass
+    def remove_tail(self):
+      current_node = self.head
+      previous_node = None
+      while current_node is not None:
+        previous_node = current_node
+        current_node = current_node.next_node
+      else:
+        previous_node.next_node = None
+
+
 
 class Queue:
   def __init__(self):
