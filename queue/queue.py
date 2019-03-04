@@ -76,12 +76,13 @@ class Queue:
 
   def enqueue(self, item):
     self.size += 1
-    return self.storage.append(Node(item))
+    self.storage.append(Node(item))
   
   def dequeue(self):
     if len(self.storage) > 0:
       self.size -= 1
-      return self.storage.pop(0)
+      removed = self.storage.pop(0)
+      return removed.value
     else:
       return None
 
