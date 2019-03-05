@@ -42,13 +42,24 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    n = ListNode(value)
+    if not self.head:
+      self.head = n
+      self.tail = n
+    else:
+      n.next = self.head
+      self.head.prev = n
+      self.head = n
+    return self.head.value
 
   def remove_from_head(self):
     pass
 
   def add_to_tail(self, value):
-    pass
+    n = ListNode(value)
+    if not self.head:
+      self.head = n
+      self.tail = n
 
   def remove_from_tail(self):
     pass
@@ -64,3 +75,10 @@ class DoublyLinkedList:
     
   def get_max(self):
     pass
+
+
+d = DoublyLinkedList()
+# Add to head works
+# print(d.add_to_head(1))
+# print(d.add_to_head(2))
+# print(d.add_to_head(3))
