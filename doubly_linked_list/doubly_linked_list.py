@@ -60,6 +60,11 @@ class DoublyLinkedList:
     if not self.head:
       self.head = n
       self.tail = n
+    else:
+      self.tail.next = n
+      n.prev = self.tail
+      self.tail = n
+    return self.tail.value
 
   def remove_from_tail(self):
     pass
@@ -82,3 +87,7 @@ d = DoublyLinkedList()
 # print(d.add_to_head(1))
 # print(d.add_to_head(2))
 # print(d.add_to_head(3))
+# Add to tail works
+# print(d.add_to_tail(10))
+# print(d.add_to_tail(20))
+# print(d.add_to_tail(30))
