@@ -22,7 +22,18 @@ class BinarySearchTree:
 
 
   def contains(self, target):
-    pass
+    if target < self.value:
+      if self.left is None:
+        return False
+      return self.left.contains(target)
+    elif target > self.value:
+      if self.right is None:
+        return False
+      return self.right.contains(target)
+    else:
+      return True
+
+    
 
   def get_max(self):
     # traverse to the right until we can no longer move right, if we hit None we know the node above it is the max
@@ -38,6 +49,7 @@ t.insert(20)
 t.insert(25)
 t.insert(50)
 t.insert(77)
-t.insert(92)
+t.insert(12312)
 print(t.get_max())
+print(t.contains(222))
 
