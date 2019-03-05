@@ -27,9 +27,10 @@ class BinarySearchTree:
   def get_max(self):
     # traverse to the right until we can no longer move right, if we hit None we know the node above it is the max
     while self.right is not None:
-      self.right
-    if self.right == None:
-      return self.value
+      self = self.right
+    return self.value
+      
+
 
 
 t = BinarySearchTree(30)
