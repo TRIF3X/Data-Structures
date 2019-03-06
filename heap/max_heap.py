@@ -10,8 +10,8 @@ class Heap:
 
   def delete(self):
     top_item = self.storage[0]
-    self.storage.insert(0, self.storage.pop())
-    self.storage.pop(1)
+    self.storage[0] = self.storage[len(self.storage) -1]
+    self.storage.pop()
     self._sift_down(0)
     return top_item
 
@@ -30,13 +30,22 @@ class Heap:
 
 
   def _sift_down(self, index):
-    left_child = (index * 2) + 1
-    right_child = (index * 2) + 2
-    parent = (index - 1) // 2
     # if the left node is greater than the right node, check left node against parent node. If child node has higher value swap them
-    if self.storage[left_child] > self.storage[right_child]:
-      if self.storage[left_child] > self.storage[parent]:
-        self.storage[left_child], self.storage[parent] = self.storage[parent], self.storage[left_child]
-    elif self.storage[right_child] > self.storage[left_child]:
-      if self.storage[right_child] > self.storage[parent]:
-        self.storage[right_child], self.storage[parent] = self.storage[parent], self.storage[right_child]
+    while (index * 2) + 1 <= len(self.storage) -1:
+      if (index * 2) + 2 > len(self.storage) -1:
+        big_num = (index * 2) + 1
+      elif self.storage[(index * 2) + 1] > self.storage[(index * 2) + 2]:
+        big_num = (index * 2) + 1
+      else:
+        big_num = (index * 2) + 2
+
+      # handle swaps after we've determined which is bigger
+      if self.storage[big_num] > self.storage[index]:
+        self.storage[big_num], self.storage[index] = self.storage[index], self.storage[big_num]
+      index = big_num
+
+
+# keys:
+#     left_child = (index * 2) + 1
+#     right_child = (index * 2) + 2
+#     parent = (index - 1) // 2
