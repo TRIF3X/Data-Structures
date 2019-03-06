@@ -9,9 +9,11 @@ class Heap:
     self._bubble_up(len(self.storage) -1)
 
   def delete(self):
+    top_item = self.storage[0]
     self.storage.insert(0, self.storage.pop())
     self.storage.pop(1)
     self._sift_down(0)
+    return top_item
 
   def get_max(self):
     # If stored in an array, our first value is the 'root' which means it is the biggest value
@@ -22,11 +24,9 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    parent = (index - 1) // 2
-
-    if self.storage[parent] < self.storage[index]:
-        self.storage[parent], self.storage[index] = self.storage[index], self.storage[parent]
-        self._bubble_up(parent)
+    if self.storage[(index - 1) // 2] < self.storage[index]:
+        self.storage[(index - 1) // 2], self.storage[index] = self.storage[index], self.storage[(index - 1) // 2]
+    index = (index - 1) // 2
 
 
   def _sift_down(self, index):
