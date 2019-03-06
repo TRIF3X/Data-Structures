@@ -5,10 +5,14 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    self.storage.append(value)
+    self._bubble_up()
 
   def delete(self):
-    pass
+    self.storage.insert(0, self.storage.pop())
+    self.storage.pop(1)
+    self._sift_down()
+
 
   def get_max(self):
     # If stored in an array, our first value is the 'root' which means it is the biggest value
@@ -37,10 +41,3 @@ class Heap:
     elif self.storage[right_child] > self.storage[left_child]:
       if self.storage[right_child] > self.storage[parent]:
         self.storage[right_child], self.storage[parent] = self.storage[parent], self.storage[right_child]
-
-
-
-# key:
-# left_child: (index * 2) + 1
-# right_child: (index * 2) + 2
-# parent: (index - 1) // 2
