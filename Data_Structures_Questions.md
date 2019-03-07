@@ -44,6 +44,7 @@ O(1), it will be the first item in the array
 
 1. What is the runtime complexity of `ListNode.insert_after`?
 
+
 2. What is the runtime complexity of `ListNode.insert_before`?
 
 3. What is the runtime complexity of `ListNode.delete`?
