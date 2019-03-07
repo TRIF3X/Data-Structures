@@ -25,14 +25,20 @@ O(n), the max value will almost be the furthest item to right on the tree. When 
 ## Heap
 
 1. What is the runtime complexity of `_bubble_up`?
+O(log n)
 
 2. What is the runtime complexity of `_sift_down`?
+O(log n)
 
 3. What is the runtime complexity of `insert`?
+best time: O(1) if the item is inserted is less than its parent
+worst time: O(log n) if we have to insert then bubble up
 
 4. What is the runtime complexity of `delete`?
+O(log n), we will have to move the last item in the array to the first then sift_down
 
 5. What is the runtime complexity of `get_max`?
+O(1), it will be the first item in the array
 
 ## Doubly Linked List
 
