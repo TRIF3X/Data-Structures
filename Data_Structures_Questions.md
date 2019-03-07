@@ -13,11 +13,14 @@ len is an O(1) operation, in python len under the hood will keep track of all th
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
+O(log n) 
 
 2. What is the runtime complexity of `contains`?
+O(log n)
 
 3. What is the runtime complexity of `get_max`? 
+O(n), the max value will almost be the furthest item to right on the tree. When Looking for the max you will be basically going down a linked-list until we find the last value
 
 ## Heap
 
