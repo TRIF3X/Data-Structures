@@ -24,20 +24,20 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    if self.storage[(index - 1) // 2] < self.storage[index]:
-        self.storage[(index - 1) // 2], self.storage[index] = self.storage[index], self.storage[(index - 1) // 2]
-    index = (index - 1) // 2
+    while self.storage[(index - 1) // 2] < self.storage[index] and index > 0:
+      self.storage[(index - 1) // 2], self.storage[index] = self.storage[index], self.storage[(index - 1) // 2]
+      index = (index - 1) // 2
 
 
   def _sift_down(self, index):
     # if the left node is greater than the right node, check left node against parent node. If child node has higher value swap them
-    while (index * 2) + 1 <= len(self.storage) -1:
-      if (index * 2) + 2 > len(self.storage) -1:
-        big_num = (index * 2) + 1
-      elif self.storage[(index * 2) + 1] > self.storage[(index * 2) + 2]:
-        big_num = (index * 2) + 1
+    while index * 2 + 1 <= len(self.storage) -1:
+      if index * 2 + 2 > len(self.storage) -1:
+        big_num = index * 2 + 1
+      elif self.storage[index * 2 + 1] > self.storage[index * 2 + 2]:
+        big_num = index * 2 + 1
       else:
-        big_num = (index * 2) + 2
+        big_num = index * 2 + 2
 
       # handle swaps after we've determined which is bigger
       if self.storage[big_num] > self.storage[index]:
